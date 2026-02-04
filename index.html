@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>监理日志汇总 - 项目部内部共享</title>
+    <!-- 引入 Tailwind CSS 用于快速构建美观界面 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+        .log-card:hover { background-color: #f8fafc; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 min-h-screen">
+
+    <!-- 页面顶部 -->
+    <header class="bg-white border-b border-gray-200 py-8 px-4 text-center">
+        <h1 class="text-2xl md:text-3xl font-bold text-gray-900">监理日志汇总</h1>
+        <p class="mt-2 text-gray-500 text-sm md:text-base">用于项目部内部共享每日监理记录</p>
+    </header>
+
+    <!-- 主体内容 -->
+    <main class="max-w-3xl mx-auto py-6 px-4">
+        
+        <!-- 日志列表容器 -->
+        <div class="bg-white shadow-sm border border-gray-200 rounded-lg overflow-hidden">
+            <div id="log-list" class="divide-y divide-gray-100">
+                <!-- 每一行日志将由 JavaScript 自动生成 -->
+            </div>
+        </div>
+
+    </main>
+
+    <!-- 页面底部 -->
+    <footer class="max-w-3xl mx-auto py-10 px-4">
+        <div class="bg-blue-50 border border-blue-100 rounded-lg p-4 mb-6">
+            <h3 class="text-blue-800 text-sm font-semibold mb-1">使用说明：</h3>
+            <p class="text-blue-700 text-xs leading-relaxed">
+                1. 本页面由项目部统一维护，每日下班前更新。<br>
+                2. 点击右侧“查看详情”即可跳转至对应的飞书/钉钉/腾讯文档。<br>
+                3. 如需新增或修改链接，请联系文档管理员。
+            </p>
+        </div>
+        
+        <!-- 预留占位 -->
+        <div class="text-center py-4 border-2 border-dashed border-gray-200 rounded-lg">
+            <span class="text-gray-400 text-sm italic">+ 新增日志请联系管理员添加</span>
+        </div>
+        
+        <p class="text-center text-gray-400 text-xs mt-8">© 2026 项目部工程管理办公室</p>
+    </footer>
+
+    <script>
+        /**
+         * 数据维护区：
+         * 只需要在这里按格式添加新的日志对象即可。
+         * 最新的日志建议放在数组的最前面。
+         */
+        const logs = [
+            { date: "2026-02-04", name: "XX项目主体结构施工监理日志", url: "https://example.com/log1" },
+            { date: "2026-02-03", name: "XX项目防水工程专项监理日志", url: "https://example.com/log2" },
+            { date: "2026-02-02", name: "XX项目基坑支护巡视记录", url: "https://example.com/log3" },
+            { date: "2026-02-01", name: "XX项目材料进场验收日志", url: "https://example.com/log4" },
+            { date: "2026-01-31", name: "XX项目节前安全大检查日志", url: "https://example.com/log5" },
+        ];
+
+        // 自动渲染列表的函数
+        function renderLogs() {
+            const listContainer = document.getElementById('log-list');
+            listContainer.innerHTML = logs.map(log => `
+                <div class="log-card flex items-center justify-between p-4 transition-colors">
+                    <div class="flex-1 pr-4">
+                        <div class="text-xs font-medium text-blue-600 mb-1">${log.date}</div>
+                        <div class="text-sm md:text-base font-semibold text-gray-800">${log.name}</div>
+                    </div>
+                    <div>
+                        <a href="${log.url}" target="_blank" 
+                           class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 shadow-sm transition-all">
+                            查看详情
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 初始化加载
+        renderLogs();
+    </script>
+</body>
+</html>
