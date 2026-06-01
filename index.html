@@ -7,7 +7,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
-        .log-card:hover { background-color: #f8fafc; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 min-h-screen">
@@ -26,19 +25,21 @@
             </div>
             <div class="ml-3">
                 <h3 class="text-lg font-bold text-amber-800">通知公告</h3>
-                <p id="notice-content" class="text-lg text-amber-700 mt-1 leading-relaxed">
-                    </p>
+                <p class="text-lg text-amber-700 mt-1 leading-relaxed">
+                    各位同事填写完监理日志后请务必在监理日志最下方签到表里签到。--2026.03.04
+                </p>
             </div>
         </div>
     </div>
 
     <main class="max-w-3xl mx-auto py-6 px-4">
-        
-        <div class="bg-white shadow-sm border border-gray-200 rounded-lg overflow-hidden">
-            <div id="log-list" class="divide-y divide-gray-100">
-                </div>
+        <div class="bg-white shadow-sm border border-gray-200 rounded-lg overflow-hidden relative">
+            <iframe 
+                src="https://www.kdocs.cn/l/ch1muaGwiHrV" 
+                class="w-full h-[600px] md:h-[800px] border-none"
+                allowfullscreen="true">
+            </iframe>
         </div>
-
     </main>
 
     <footer class="max-w-3xl mx-auto py-10 px-4">
@@ -46,95 +47,13 @@
             <h3 class="text-blue-800 text-sm font-semibold mb-1">使用说明：</h3>
             <p class="text-blue-700 text-xs leading-relaxed">
                 1. 本页面由项目部统一维护，每日下班前更新。<br>
-                2. 点击右侧“前往编辑”即可跳转至对应日期的监理日志进行编辑。<br>
+                2. 在上方表格中找到对应日期，点击链接即可跳转至监理日志进行编辑。<br>
                 3. 如发现问题，请联系管理员：郗传杰。
             </p>
-        </div>
-        
-        <div class="text-center py-4 border-2 border-dashed border-gray-200 rounded-lg">
-            <span class="text-gray-400 text-sm italic">+ 新增日志请联系管理员添加</span>
         </div>
         
         <p class="text-center text-gray-400 text-xs mt-8">© 华能泰安燃机项目部</p>
     </footer>
 
-    <script>
-        /**
-         * 数据维护区
-         */
-        
-        // 1. 公告内容
-        const currentNotice = "各位同事填写完监理日志后请务必在监理日志最下方签到表里签到。--2026.03.04";
-
-        // 2. 日志数据列表
-        const logs = [
-            { date: "2026-06-05", name: "监理日志", url: "https://www.kdocs.cn/l/cd7ONSKMVeJC" },
-            { date: "2026-06-04", name: "监理日志", url: "https://www.kdocs.cn/l/ck64ywKEAGml" },
-            { date: "2026-06-03", name: "监理日志", url: "https://www.kdocs.cn/l/chLmWgGTiarI" },
-            { date: "2026-06-02", name: "监理日志", url: "https://www.kdocs.cn/l/crPEVfiWQDKA" },
-            { date: "2026-06-01", name: "监理日志", url: "https://www.kdocs.cn/l/cgHtaLtOLuCt" },
-            { date: "2026-05-31", name: "监理日志", url: "https://www.kdocs.cn/l/coKgH6k712yT" },
-            { date: "2026-05-30", name: "监理日志", url: "https://www.kdocs.cn/l/ceQJO6gbZej2" },
-            { date: "2026-05-29", name: "监理日志", url: "https://www.kdocs.cn/l/cqyV9D4yhMWD" },
-            { date: "2026-05-28", name: "监理日志", url: "https://www.kdocs.cn/l/cuL7kf1NXVQz" },
-            { date: "2026-05-27", name: "监理日志", url: "https://www.kdocs.cn/l/cvqD8yAUGquW" },
-            { date: "2026-05-26", name: "监理日志", url: "https://www.kdocs.cn/l/ctapw0jM8JuV" },
-            { date: "2026-05-25", name: "监理日志", url: "https://www.kdocs.cn/l/ch0eiXotqllB" },
-            { date: "2026-05-24", name: "监理日志", url: "https://www.kdocs.cn/l/cbdOAdmVSOin" },
-            { date: "2026-05-23", name: "监理日志", url: "https://www.kdocs.cn/l/cjuOmoELoa17" },
-            { date: "2026-05-22", name: "监理日志", url: "https://www.kdocs.cn/l/cjNlnAEG56Ob" },
-            { date: "2026-05-21", name: "监理日志", url: "https://www.kdocs.cn/l/cmBPm7kjZ7y2" },
-            { date: "2026-05-20", name: "监理日志", url: "https://www.kdocs.cn/l/ckBph9TuoRfu" },
-            { date: "2026-05-19", name: "监理日志", url: "https://www.kdocs.cn/l/cjEvmmfUbWAW" },
-            { date: "2026-05-18", name: "监理日志", url: "https://www.kdocs.cn/l/ccskcWf3zRBA" },
-            { date: "2026-05-17", name: "监理日志", url: "https://www.kdocs.cn/l/ceAVt2ZODFTT" },
-            { date: "2026-05-16", name: "监理日志", url: "https://www.kdocs.cn/l/cbaykjXWNDjw" },
-            { date: "2026-05-15", name: "监理日志", url: "https://www.kdocs.cn/l/cbaEihwfnyo0" },
-            { date: "2026-05-14", name: "监理日志", url: "https://www.kdocs.cn/l/caN9N3Rlrx7C" },
-            { date: "2026-05-13", name: "监理日志", url: "https://www.kdocs.cn/l/cijcN57EBiMa" },
-            { date: "2026-05-12", name: "监理日志", url: "https://www.kdocs.cn/l/cvHwJS1wsyEx" },
-            { date: "2026-05-11", name: "监理日志", url: "https://www.kdocs.cn/l/cbROYjOA0ADU" },
-            { date: "2026-05-10", name: "监理日志", url: "https://www.kdocs.cn/l/cv8rM8TBvnWR" },
-            { date: "2026-05-09", name: "监理日志", url: "https://www.kdocs.cn/l/crMVFWh8q3QN" },
-            { date: "2026-05-08", name: "监理日志", url: "https://www.kdocs.cn/l/cblUicP79CvE" },
-            { date: "2026-05-07", name: "监理日志", url: "https://www.kdocs.cn/l/cds5ibDCBxDH" },
-            { date: "2026-05-06", name: "监理日志", url: "https://www.kdocs.cn/l/criqXiwt3dCO" },
-            { date: "2026-05-05", name: "监理日志", url: "https://www.kdocs.cn/l/ckv7yKnqRl4P" },
-            { date: "2026-05-04", name: "监理日志", url: "https://www.kdocs.cn/l/ciyBxZ9CvfZz" },
-            { date: "2026-05-03", name: "监理日志", url: "https://www.kdocs.cn/l/cd8D7E2R022h" },
-            { date: "2026-05-02", name: "监理日志", url: "https://www.kdocs.cn/l/cpnE9438UTqb" },
-            { date: "2026-05-01", name: "监理日志", url: "https://www.kdocs.cn/l/coaCzBzxldcW" },
-                     ];
-
-        // 渲染函数
-        function initPage() {
-            // 渲染公告
-            document.getElementById('notice-content').innerText = currentNotice;
-
-            // 渲染列表
-            const listContainer = document.getElementById('log-list');
-            listContainer.innerHTML = logs.map(log => {
-                const hasUrl = log.url && log.url.length > 0;
-                return `
-                <div class="log-card flex items-center justify-between p-4 transition-colors">
-                    <div class="flex-1 pr-4">
-                        <div class="text-lg font-medium text-blue-600 mb-1">${log.date}</div>
-                        <div class="text-lg md:text-base font-semibold text-gray-800">${log.name}</div>
-                    </div>
-                    <div>
-                        <a href="${hasUrl ? log.url : 'javascript:void(0)'}" 
-                           target="${hasUrl ? '_blank' : '_self'}" 
-                           class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm transition-all
-                           ${hasUrl ? 'text-white bg-blue-600 hover:bg-blue-700' : 'text-gray-400 bg-gray-200 cursor-not-allowed'}">
-                           ${hasUrl ? '前往编辑' : '暂未更新'}
-                        </a>
-                    </div>
-                </div>
-            `}).join('');
-        }
-
-        // 初始化加载
-        initPage();
-    </script>
 </body>
 </html>
